@@ -7,3 +7,5 @@ from .personae.person import *
 from .personae.authority import *
 from .personae.farmer import *
 from .resources.resource import *
+from .resources.crop import *
+from .resources.mandi import *
