@@ -9,3 +9,5 @@ from .personae.farmer import *
 from .resources.resource import *
 from .resources.crop import *
 from .resources.mandi import *
+from .allotment.allotment import *
+from .allotment.request import *

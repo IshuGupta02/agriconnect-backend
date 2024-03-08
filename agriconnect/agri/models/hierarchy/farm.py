@@ -1,4 +1,4 @@
-from django.db import models
+from django.contrib.gis.db import models
 
 class Farm(models.Model):
     village = models.ForeignKey(to = 'Village', on_delete=models.CASCADE, related_name='farms')
