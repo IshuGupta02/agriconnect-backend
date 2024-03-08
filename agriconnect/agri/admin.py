@@ -1,3 +1,7 @@
 from django.contrib import admin
+from agri.models import *
 
-# Register your models here.
+admin.site.register(Country)
+admin.site.register(State)
+admin.site.register(District)
+admin.site.register(Village)
