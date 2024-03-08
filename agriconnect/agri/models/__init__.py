@@ -6,3 +6,4 @@ from .hierarchy.farm import *
 from .personae.person import *
 from .personae.authority import *
 from .personae.farmer import *
+from .resources.resource import *
