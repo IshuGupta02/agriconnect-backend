@@ -4,10 +4,12 @@ from django.conf.urls import include
 from agri.views.personae.person import PersonViewSet
 from rest_framework.authtoken.views import obtain_auth_token
 from agri.views.personae.authority import AuthorityViewSet
+from agri.views.personae.farmer import FarmerViewSet
 
 router = routers.DefaultRouter()
 router.register(r'person', PersonViewSet)
 router.register(r'authorities', AuthorityViewSet)
+router.register(r'farmers', FarmerViewSet, basename='farmer')
 
 urlpatterns = [
     path('', include(router.urls)),
