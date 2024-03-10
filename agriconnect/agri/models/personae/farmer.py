@@ -6,4 +6,4 @@ class Farmer(models.Model):
     is_bpl = models.BooleanField(default=False)
 
     def __str__(self):
-        return f"{self.name} - Farmer"
+        return f"{self.person.name} - Farmer"
