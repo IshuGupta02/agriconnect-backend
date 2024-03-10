@@ -7,6 +7,7 @@ from agri.models.personae.person import Person
 from agri.serializers.personae.person import PersonSerializer
 from agri.serializers.personae.authority import AuthoritySerializer
 from agri.serializers.personae.farmer import FarmerSerializer
+from rest_framework import status
 
 class PersonViewSet(viewsets.ModelViewSet):
     queryset = Person.objects.all()
@@ -18,6 +19,24 @@ class PersonViewSet(viewsets.ModelViewSet):
         person = serializer.save()
         person.set_password(password)
         person.save()
+
+    @action(detail=False, methods=['post'])
+    def get_person_id_from_token(self, request):
+        token = request.data.get('token')
+
+        if not token:
+            return Response({'error': 'Token parameter is required'}, status=status.HTTP_400_BAD_REQUEST)
+
+        User = Person
+
+        try:
+            user = User.objects.get(auth_token__key=token)
+        except User.DoesNotExist:
+            return Response({'error': 'Invalid token'}, status=status.HTTP_400_BAD_REQUEST)
+
+        person_id = user.id
+
+        return Response({'person_id': person_id}, status=status.HTTP_200_OK)
 
     @action(detail=True, methods=['get'])
     def get_authorities_and_farmers(self, request, pk=None):
