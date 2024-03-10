@@ -12,7 +12,7 @@ from agri.serializers.hierarchy.farm import FarmSerializer
 class FarmerViewSet(viewsets.ModelViewSet):
     queryset = Farmer.objects.all()
     serializer_class = FarmerSerializer
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
     def create(self, request, *args, **kwargs):
         # Override create to set the person field based on the current user
